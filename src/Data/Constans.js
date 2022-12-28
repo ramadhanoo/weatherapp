@@ -6,7 +6,7 @@ export const API_STATUS2 = 'staging';
 export const Api_status3 = 'prod';
 export const ZONE = 'London,uk';
 
-export const API_KEY = '48ee13341fed5652a9cb3a1ad019c06f';
+export const API_KEY = '06d529056e6a8272293c9dddeb9e57f2';
 
 export const LANG = {
   eng: {

@@ -23,18 +23,18 @@ export function* startup(api, store) {
     isLogged: false,
     token: null,
   });
-  api.api.addMonitor(response => {
-    if (!response.ok) {
-      if (response.status === 401) {
-        const {message_title, message} = response.data;
-        const store = createStore();
-        const persist = () => {
-          store.dispatch(SessionActions.clearSession());
-        };
-        persistStore(store, null, persist);
-      }
-    }
-  });
+  // api.api.addMonitor(response => {
+  //   if (!response.ok) {
+  //     if (response.status === 401) {
+  //       const {message_title, message} = response.data;
+  //       const store = createStore();
+  //       const persist = () => {
+  //         store.dispatch(SessionActions.clearSession());
+  //       };
+  //       persistStore(store, null, persist);
+  //     }
+  //   }
+  // });
 
   // if (isLogged === true) {
   //   StackComponent.setRootAuth();

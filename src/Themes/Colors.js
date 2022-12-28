@@ -53,6 +53,7 @@ const Colors = {
   peach: '#FFC2C2',
   darkWhite: '#f8f8f8',
   borderColors: '#cccccc',
+  whiteBlur: 'rgba(52, 52, 52, 0.8)',
 };
 
 export default Colors;

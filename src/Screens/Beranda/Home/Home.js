@@ -1,19 +1,28 @@
 import React from 'react';
 import styles from './Home.styles';
 import {useHome} from './useHome';
-import {BaseScreens} from '../../../Components/index';
-import {Text} from 'react-native';
+import {BaseScreens, Header} from '../../../Components/index';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {Colors} from '../../../Themes';
 
 const Home = props => {
   const {state, actions} = useHome();
-  const {actionsData, onRefresh, openCart} = actions;
+  const {actionsData, onRefresh, openCart, onPressDetail} = actions;
   const {themes} = state;
 
   return (
     <BaseScreens
-      safeAreaColor={themes.backgroundColor}
+      safeAreaColor={Colors.white}
+      transparent={true}
       style={styles.container}>
-      <Text>Hahahaha</Text>
+      <ScrollView>
+        <Header status={'testinggg'} />
+        <TouchableOpacity
+          onPress={onPressDetail}
+          style={{width: 100, height: 30, backgroundColor: 'red'}}>
+          <Text>Hahahah</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </BaseScreens>
   );
 };

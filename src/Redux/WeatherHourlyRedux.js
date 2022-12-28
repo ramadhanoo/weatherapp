@@ -3,13 +3,13 @@ import {createReducer, createActions} from 'reduxsauce';
 /* ------------- Types and Action Creators ------------- */
 
 const {Types, Creators} = createActions({
-  setWeatherReq: ['payload'],
-  succesFetchWeather: ['payload'],
-  errorFetchWeather: ['payload'],
-  setLoadingWeather: ['payload'],
+  setWeatherHourlyReq: ['payload'],
+  succesFetchWeatherHourly: ['payload'],
+  errorFetchWeatherHourly: ['payload'],
+  setLoadingWeatherHourly: ['payload'],
 });
 
-export const WeatherTypes = Types;
+export const WeatherHourlyTypes = Types;
 export default Creators;
 
 /* ------------- Initial State ------------- */
@@ -25,17 +25,17 @@ export const INITIAL_STATE = {
 
 /* ------------- Selectors ------------- */
 
-export const WeatherSelectors = {
-  getData: state => state.weather.data,
+export const WeatherHourlySelectors = {
+  getData: state => state.weatherHourly.data,
 };
 
 /* ------------- Reducers ------------- */
 
-export const setWeatherReqReducer = (state, {payload}) => ({
+export const setWeatherHourlyReqReducer = state => ({
   ...state,
 });
 
-export const succesFetchWeatherReducer = (state, {payload}) => ({
+export const succesFetchWeatherHourlyReducer = (state, {payload}) => ({
   ...state,
   data: payload?.data ?? null,
   loading: false,
@@ -44,7 +44,7 @@ export const succesFetchWeatherReducer = (state, {payload}) => ({
   message: '',
 });
 
-export const errorFetchWeatherReducer = (state, {payload}) => ({
+export const errorFetchWeatherHourlyReducer = (state, {payload}) => ({
   ...state,
   data: null,
   loading: false,
@@ -53,7 +53,7 @@ export const errorFetchWeatherReducer = (state, {payload}) => ({
   message: '',
 });
 
-export const setLoadingWeatherReducer = (state, {payload}) => ({
+export const setLoadingWeatherHourlyReducer = (state, {payload}) => ({
   ...state,
   loading: payload?.actionType === 'refresh' ? false : payload.loading,
   error: payload.error,
@@ -63,8 +63,8 @@ export const setLoadingWeatherReducer = (state, {payload}) => ({
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SET_WEATHER_REQ]: setWeatherReqReducer,
-  [Types.SUCCES_FETCH_WEATHER]: succesFetchWeatherReducer,
-  [Types.ERROR_FETCH_WEATHER]: errorFetchWeatherReducer,
-  [Types.SET_LOADING_WEATHER]: setLoadingWeatherReducer,
+  [Types.SET_WEATHER_HOURLY_REQ]: setWeatherHourlyReqReducer,
+  [Types.SUCCES_FETCH_WEATHER_HOURLY]: succesFetchWeatherHourlyReducer,
+  [Types.ERROR_FETCH_WEATHER_HOURLY]: errorFetchWeatherHourlyReducer,
+  [Types.SET_LOADING_WEATHER_HOURLY]: setLoadingWeatherHourlyReducer,
 });

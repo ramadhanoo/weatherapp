@@ -12,6 +12,8 @@ export const reducers = combineReducers({
   session: resettable(require('./SessionRedux').reducer),
   lang: resettable(require('./LangRedux').reducer),
   theme: resettable(require('./ThemeRedux').reducer),
+  weather: resettable(require('./WeatherRedux').reducer),
+  weatherHourly: resettable(require('./WeatherHourlyRedux').reducer),
 });
 
 export default () => {

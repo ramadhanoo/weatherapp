@@ -1,19 +1,60 @@
 import {put, call} from 'redux-saga/effects';
-import JokesActions, {JokesSelectors} from '../Redux/JokesRedux';
-import {error} from '../Components/index';
-import {Alert} from 'react-native';
+import WeatherHourlyActions from '../Redux/WeatherHourlyRedux';
+import WeatherActions from '../Redux/WeatherRedux';
 
 export function* getDataWeather(api, {payload}) {
   try {
-    var response = yield call(api.jokesApi, payload);
+    yield put(
+      WeatherActions.setLoadingWeather({
+        loading: true,
+        error: false,
+        actionType: payload.actionType,
+      }),
+    );
+    var response = yield call(api.currWeather, payload);
     const {ok, data, status} = response;
-    // if (ok && status === 200) {
-    //   yield put(JokesActions.succesFetchJokes({actionType: payload.actionType}),);
-    // } else {
-    //   yield put(JokesActions.errorFetchJokes({message: 'error'}));
-    // }
+    if (ok && status === 200) {
+      yield put(WeatherHourlyActions.setWeatherHourlyReq({actionType: 'load'}));
+      yield put(
+        WeatherActions.succesFetchWeather({
+          data: data,
+          actionType: payload.actionType,
+        }),
+      );
+    } else {
+      yield put(WeatherActions.errorFetchWeather({message: 'error'}));
+    }
   } catch (err) {
     console.log('error getDataWeather');
-    // yield put(JokesActions.errorFetchJokes({message: 'error'}));
+    yield put(WeatherActions.errorFetchWeather({message: 'error'}));
+  }
+}
+
+export function* getDataWeatherHourly(api, {payload}) {
+  try {
+    yield put(
+      WeatherHourlyActions.setLoadingWeatherHourly({
+        loading: true,
+        error: false,
+        actionType: payload.actionType,
+      }),
+    );
+    var response = yield call(api.currWeatherHourly, payload);
+    const {ok, data, status} = response;
+    if (ok && status === 200) {
+      yield put(
+        WeatherHourlyActions.succesFetchWeatherHourly({
+          data: data,
+          actionType: payload.actionType,
+        }),
+      );
+    } else {
+      yield put(
+        WeatherHourlyActions.errorFetchWeatherHourly({message: 'error'}),
+      );
+    }
+  } catch (err) {
+    console.log('error getDataWeatherHourly');
+    yield put(WeatherHourlyActions.errorFetchWeatherHourly({message: 'error'}));
   }
 }

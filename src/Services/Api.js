@@ -39,9 +39,21 @@ const create = (baseURL = BASE_URL) => {
   //
 
   const getRoot = () => api.get('');
-  const jokesApi = () =>
+  const currWeather = () =>
     api.get(
       `/weather?q=${ZONE}&appid=${API_KEY}`,
+      {},
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      },
+    );
+
+  const currWeatherHourly = () =>
+    api.get(
+      `/forecast?q=${ZONE}&appid=${API_KEY}`,
       {},
       {
         headers: {
@@ -66,7 +78,8 @@ const create = (baseURL = BASE_URL) => {
   return {
     // a list of the API functions from step 2
     getRoot,
-    jokesApi,
+    currWeather,
+    currWeatherHourly,
     api,
   };
 };

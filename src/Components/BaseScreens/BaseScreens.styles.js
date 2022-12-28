@@ -4,7 +4,8 @@ const styling = (props, themes) =>
   StyleSheet.create({
     container: {
       flex: 0,
-      backgroundColor: props.backgroundColors,
+      backgroundColor:
+        props.transparent === true ? 'transparent' : props.safeAreaColor,
     },
     boxContainer: {
       flex: 1,
