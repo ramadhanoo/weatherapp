@@ -1,9 +1,10 @@
-import {Colors, Images} from '../Themes';
+import {Colors} from '../Themes';
 export const API_VERSION = '2.5';
 export const BASE_URL = `https://api.openweathermap.org/data/${API_VERSION}`;
 export const API_STATUS = 'dev';
 export const API_STATUS2 = 'staging';
 export const Api_status3 = 'prod';
+export const ZONE = 'London,uk';
 
 export const API_KEY = '48ee13341fed5652a9cb3a1ad019c06f';
 

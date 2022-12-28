@@ -1,6 +1,6 @@
 // a library to wrap and simplify api calls
 import apisauce from 'apisauce';
-import {BASE_URL, Host} from '../Data/Constans';
+import {API_KEY, BASE_URL, Host, ZONE} from '../Data/Constans';
 import querystring from 'querystring';
 
 // our "constructor"
@@ -39,43 +39,9 @@ const create = (baseURL = BASE_URL) => {
   //
 
   const getRoot = () => api.get('');
-
-  // Auth
-  const login = body =>
-    api.post('/token', querystring.stringify(body), {
-      headers: {
-        Host: Host,
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    });
-  const loginUrlApi = body =>
-    api.post('/token', querystring.stringify(body), {});
-  const getCoffe = dataReq =>
+  const jokesApi = () =>
     api.get(
-      '/coffee/hot',
-      {},
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      },
-    );
-  const jokesApi = ({type}) =>
-    api.get(
-      `/wines/${type}`,
-      {},
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      },
-    );
-
-  const jokesDetailApi = ({desc, amount}) =>
-    api.get(
-      `/joke/${desc}?type=single&amount=${amount}`,
+      `/weather?q=${ZONE}&appid=${API_KEY}`,
       {},
       {
         headers: {
@@ -99,12 +65,8 @@ const create = (baseURL = BASE_URL) => {
   //
   return {
     // a list of the API functions from step 2
-    login,
-    loginUrlApi,
     getRoot,
-    getCoffe,
     jokesApi,
-    jokesDetailApi,
     api,
   };
 };
