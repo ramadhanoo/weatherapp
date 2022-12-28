@@ -1,4 +1,4 @@
-# Test app
+# Weather App
 #### if you are looking for the apk it is in the apk release folder
 
 ## How to run:
