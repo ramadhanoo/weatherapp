@@ -11,7 +11,7 @@ import HourlyForecast from './content/HourlyForecast/HourlyForecast';
 const Home = props => {
   const {state, actions} = useHome();
   const {actionsData, onPressDetail} = actions;
-  const {whRedux} = state;
+  const {whRedux, activeId, setActiveId} = state;
 
   return (
     <BaseScreens
@@ -70,7 +70,7 @@ const Home = props => {
               horizontal={false}>
               <Section
                 isLoading={whRedux.loading}
-                shimmerSize={10}
+                shimmerSize={2}
                 containerBodyStyle={styles.containerCardVertical}
                 loadingContainerStyles={styles.containerCardVertical}
                 loadingIndicatorStyle={styles.dayLoading}>
@@ -78,8 +78,13 @@ const Home = props => {
                   return (
                     <HourlyForecast
                       key={index}
+                      id={item.dt}
+                      onPressItem={actionsData}
                       time={'24:00'}
                       title={'Tomorrow'}
+                      whRedux={whRedux}
+                      active={false}
+                      activeId={activeId}
                     />
                   );
                 })}
