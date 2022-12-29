@@ -11,8 +11,6 @@ export const BaseScreens = React.forwardRef(({children, ...props}, ref) => {
   const styles = styling(props, themes);
   const {transparent} = props;
 
-  console.tron.log('asasa', props);
-
   return (
     <View style={styles.boxContainer}>
       {transparent === false ? <SafeAreaView style={styles.container} /> : null}
@@ -24,4 +22,5 @@ export const BaseScreens = React.forwardRef(({children, ...props}, ref) => {
 BaseScreens.defaultProps = {
   safeAreaColor: Colors.white,
   transparent: false,
+  colorBackground: Colors.background
 };

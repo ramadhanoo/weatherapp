@@ -10,6 +10,7 @@ export const useHome = () => {
   const themeSelector = useSelector(state => state.theme);
   const themes = useSelector(ThemeSelectors.getColors);
   const sampleRedux = useSelector(state => state);
+  const whRedux = useSelector(state => state.weatherHourly)
 
   useEffect(() => {
     dispatch(WeatherActions.setWeatherReq({actionType: 'load'}));
@@ -28,6 +29,7 @@ export const useHome = () => {
     state: {
       themes,
       sampleRedux,
+      whRedux,
     },
     actions: {
       actionsData,

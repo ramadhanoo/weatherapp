@@ -10,8 +10,8 @@ export default StyleSheet.create({
     height: Height_Header,
     backgroundColor: Colors.mainColor,
     paddingHorizontal: 20,
-    justifyContent: 'center',
     alignItems: 'center',
+    paddingTop: 40,
   },
   buttonStyle: {
     alignItems: 'center',
@@ -20,6 +20,7 @@ export default StyleSheet.create({
     padding: 10,
     paddingHorizontal: 20,
     borderRadius: 20,
+    marginBottom: 20,
     backgroundColor: Colors.whiteBlur,
   },
   styleText: {
@@ -30,6 +31,7 @@ export default StyleSheet.create({
   containerRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginTop: 4,
   },
   tempTitle: {
     fontSize: Fonts.size.h1,
@@ -46,5 +48,18 @@ export default StyleSheet.create({
     borderRadius: 20,
     borderColor: Colors.white,
     borderWidth: 2,
+  },
+  containerSuhu: {
+    flexDirection: 'row',
+    padding: 7,
+  },
+  tmpTextStyles: {
+    marginLeft: 3,
+  },
+  statusText: {
+    fontSize: Fonts.size.small,
+    color: Colors.white,
+    fontFamily: Fonts.type.medium,
+    marginTop: 10,
   },
 });

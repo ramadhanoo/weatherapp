@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const styling = (props, themes) =>
   StyleSheet.create({
@@ -9,6 +10,7 @@ const styling = (props, themes) =>
     },
     boxContainer: {
       flex: 1,
+      backgroundColor: props.colorBackground,
     },
   });
 
