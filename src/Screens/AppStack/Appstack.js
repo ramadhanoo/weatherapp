@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, ActivityIndicator} from 'react-native';
 import {useAppstack} from './useAppstack';
 import {Colors, Images} from '../../Themes';
 import {BaseScreens} from '../../Components/index';
@@ -12,7 +12,7 @@ const Appstack = props => {
 
   return (
     <BaseScreens style={styles.body}>
-      <Image source={Images.coffe1} style={styles.container} />
+      <ActivityIndicator size={'large'} />
     </BaseScreens>
   );
 };

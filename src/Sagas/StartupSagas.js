@@ -41,5 +41,5 @@ export function* startup(api, store) {
   // } else {
   //   StackComponent.setRootMain();
   // }
-  StackComponent.setRootMain();
+  StackComponent.setRootWelcome();
 }

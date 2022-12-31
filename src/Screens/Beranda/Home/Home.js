@@ -15,13 +15,12 @@ const Home = props => {
   const {state, actions} = useHome();
   const {actionsData, onPressDetail} = actions;
   const {whRedux, activeId, weatherRedux} = state;
-
   return (
     <BaseScreens
       safeAreaColor={Colors.white}
       transparent={true}
       style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
         <Header
           status={'Monstly Cloudy'}
           tmpHigest={parseInt(weatherRedux.data?.main?.temp_max ?? 0, 10)}

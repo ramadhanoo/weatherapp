@@ -11,7 +11,11 @@ export default StyleSheet.create({
     backgroundColor: Colors.mainColor,
     paddingHorizontal: 20,
     alignItems: 'center',
-    paddingTop: 40,
+  },
+  lottie: {
+    position: 'absolute',
+    top: 0,
+    marginTop: 30,
   },
   containerDetail: {
     width: ScreenWidth,

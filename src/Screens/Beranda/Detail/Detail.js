@@ -17,6 +17,7 @@ const Detail = props => {
     switchPressWeatherUpdate,
     switchPressSevereUpdate,
     setActiveDistance,
+    openModal,
   } = actions;
   const {
     weatherRedux,
@@ -29,7 +30,7 @@ const Detail = props => {
   return (
     <BaseScreens safeAreaColor={Colors.background} style={styles.container}>
       <HeaderDetail
-        leftPress={done}
+        leftPress={cancel}
         rightPress={cancel}
         status={'Monstly Cloudy'}
         tmpHigest={parseInt(weatherRedux.data?.main?.temp_max ?? 0, 10)}

@@ -10,6 +10,27 @@ export const API_KEY = '06d529056e6a8272293c9dddeb9e57f2';
 
 export const DISTANCE = [1, 8, 16, 24, 48];
 
+export const LOCATIONS = [
+  {
+    negara: 'London, UK',
+    code: 'UK',
+    forApi: 'London,uk',
+    subTitle: '5648573567836458736',
+  },
+  {
+    negara: 'Indonesia, ID',
+    code: 'ID',
+    forApi: 'Idonesia,id',
+    subTitle: '5648573567836458736',
+  },
+  {
+    negara: 'French, FR',
+    code: 'FR',
+    forApi: 'french,fr',
+    subTitle: '5648573567836458736',
+  },
+];
+
 export const DATA_SETTINGS = [
   {
     id: 1,

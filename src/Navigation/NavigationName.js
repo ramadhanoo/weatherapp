@@ -4,6 +4,12 @@ export const NAVIGATION_NAME = {
     home: 'home.home',
     detail: 'home.detail',
   },
+  MODAL: {
+    modalLocations: 'modal.modalLocations',
+  },
+  WELCOME: {
+    welcome: 'welcome.welcomeScreen',
+  },
 };
 
 export const any = () => {};

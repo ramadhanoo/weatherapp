@@ -16,7 +16,7 @@ async function prepareIcons() {
 }
 
 // sample to set Auth.login screen as Root Screen
-function setRootAuth() {
+function setRootSpalsh() {
   Navigation.setRoot({
     root: {
       stack: {
@@ -24,7 +24,25 @@ function setRootAuth() {
         children: [
           {
             component: {
-              name: NAVIGATION_NAME.AUTH.welcomeScreen,
+              name: NAVIGATION_NAME.APP,
+              // name: NAVIGATION_NAME.AGENT.connected
+            },
+          },
+        ],
+      },
+    },
+  });
+}
+
+function setRootWelcome() {
+  Navigation.setRoot({
+    root: {
+      stack: {
+        id: 'welcome',
+        children: [
+          {
+            component: {
+              name: NAVIGATION_NAME.WELCOME.welcome,
               // name: NAVIGATION_NAME.AGENT.connected
             },
           },
@@ -91,7 +109,8 @@ async function setRootHome() {
 }
 
 export default {
-  setRootAuth,
+  setRootSpalsh,
+  setRootWelcome,
   setRootHome,
   setRootMain,
 };
