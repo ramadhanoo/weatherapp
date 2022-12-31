@@ -41,7 +41,7 @@ const create = (baseURL = BASE_URL) => {
   const getRoot = () => api.get('');
   const currWeather = () =>
     api.get(
-      `/weather?q=${ZONE}&appid=${API_KEY}`,
+      `/weather?q=${ZONE}&appid=${API_KEY}&units=metric`,
       {},
       {
         headers: {
@@ -53,7 +53,7 @@ const create = (baseURL = BASE_URL) => {
 
   const currWeatherHourly = () =>
     api.get(
-      `/forecast?q=${ZONE}&appid=${API_KEY}`,
+      `/forecast?q=${ZONE}&appid=${API_KEY}&units=metric`,
       {},
       {
         headers: {

@@ -8,6 +8,80 @@ export const ZONE = 'London,uk';
 
 export const API_KEY = '06d529056e6a8272293c9dddeb9e57f2';
 
+export const DISTANCE = [1, 8, 16, 24, 48];
+
+export const DATA_SETTINGS = [
+  {
+    id: 1,
+    name: 'Allow Notifications',
+    active: true,
+    iconName: 'notifications',
+    colorBackground: Colors.notif,
+  },
+  {
+    id: 2,
+    name: 'Scheduled',
+    active: false,
+    iconName: 'notifications-circle-sharp',
+    colorBackground: Colors.schedule,
+  },
+];
+
+export const DATA_SETTINGS_WEATHER_UPDATE = [
+  {
+    id: 3,
+    name: 'Precipitation Update',
+    active: false,
+    iconName: 'umbrella-outline',
+    colorBackground: Colors.colarBlue,
+  },
+  {
+    id: 4,
+    name: 'Major Changes',
+    active: false,
+    iconName: 'ios-cloud-done',
+    colorBackground: Colors.orange,
+  },
+  {
+    id: 5,
+    name: 'Morning Update',
+    active: false,
+    iconName: 'ios-sunny',
+    colorBackground: Colors.orangeLight,
+  },
+  {
+    id: 6,
+    name: 'Evening Update',
+    active: false,
+    iconName: 'moon',
+    colorBackground: Colors.darkPink,
+  },
+];
+
+export const DATA_SETTINGS_SEVERE_UPDATE = [
+  {
+    id: 7,
+    name: 'Lightning Tracker',
+    active: false,
+    iconName: 'thunderstorm',
+    colorBackground: Colors.yellow,
+  },
+  {
+    id: 8,
+    name: 'Hurricane Tracker',
+    active: false,
+    iconName: 'ice-cream-sharp',
+    colorBackground: Colors.red,
+  },
+  {
+    id: 9,
+    name: 'Severe Weather Alert',
+    active: false,
+    iconName: 'warning',
+    colorBackground: Colors.purple,
+  },
+];
+
 export const LANG = {
   eng: {
     opening: 'Find the best',

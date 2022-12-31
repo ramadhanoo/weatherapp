@@ -54,6 +54,14 @@ const Colors = {
   darkWhite: '#f8f8f8',
   borderColors: '#cccccc',
   whiteBlur: 'rgba(52, 52, 52, 0.8)',
+
+  notif: '#61876E',
+  schedule: '#58287F',
+  activeColor: '#205295',
+  inactiveColor: '#C4C4C4',
+  orange: '#FF6E31',
+  orangeLight: '#FFB100',
+  darkPink: '#E98EAD',
 };
 
 export default Colors;

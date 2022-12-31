@@ -1,6 +1,7 @@
 import {put, call} from 'redux-saga/effects';
 import WeatherHourlyActions from '../Redux/WeatherHourlyRedux';
 import WeatherActions from '../Redux/WeatherRedux';
+import {mapDates} from '../Screens/Beranda/Home/Home.mapper';
 
 export function* getDataWeather(api, {payload}) {
   try {
@@ -42,10 +43,12 @@ export function* getDataWeatherHourly(api, {payload}) {
     var response = yield call(api.currWeatherHourly, payload);
     const {ok, data, status} = response;
     if (ok && status === 200) {
+      var listWeather = mapDates(data?.list ?? []);
       yield put(
         WeatherHourlyActions.succesFetchWeatherHourly({
           data: data,
           actionType: payload.actionType,
+          dailyForecast: listWeather,
         }),
       );
     } else {

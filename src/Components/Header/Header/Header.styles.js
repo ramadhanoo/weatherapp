@@ -13,6 +13,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingTop: 40,
   },
+  containerDetail: {
+    width: ScreenWidth,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+  },
   buttonStyle: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -28,14 +33,32 @@ export default StyleSheet.create({
     fontFamily: Fonts.type.semibold,
     color: Colors.white,
   },
+  styleText2: {
+    fontSize: Fonts.size.mini,
+    fontFamily: Fonts.type.semibold,
+    color: Colors.mainColor,
+  },
   containerRow: {
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 4,
   },
+  containerRowDetail: {
+    flexDirection: 'row',
+    width: ScreenWidth,
+    alignItems: 'center',
+    marginTop: 4,
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+  },
   tempTitle: {
     fontSize: Fonts.size.h1,
     color: Colors.white,
+    marginLeft: 8,
+  },
+  tempTitle2: {
+    fontSize: Fonts.size.h1,
+    color: Colors.mainColor,
     marginLeft: 8,
   },
   containerTemp: {
@@ -47,6 +70,14 @@ export default StyleSheet.create({
     height: Fonts.size.h1 * 0.3,
     borderRadius: 20,
     borderColor: Colors.white,
+    borderWidth: 2,
+  },
+  iconsTemp2: {
+    top: 5,
+    width: Fonts.size.h1 * 0.3,
+    height: Fonts.size.h1 * 0.3,
+    borderRadius: 20,
+    borderColor: Colors.mainColor,
     borderWidth: 2,
   },
   containerSuhu: {
@@ -61,5 +92,18 @@ export default StyleSheet.create({
     color: Colors.white,
     fontFamily: Fonts.type.medium,
     marginTop: 10,
+  },
+  statusText2: {
+    fontSize: Fonts.size.small,
+    color: Colors.mainColor,
+    fontFamily: Fonts.type.medium,
+    marginTop: 10,
+  },
+  fontStyleHeader: {
+    fontFamily: Fonts.type.bold,
+    color: Colors.mainColor,
+  },
+  buttonStyleBack: {
+    padding: 5,
   },
 });

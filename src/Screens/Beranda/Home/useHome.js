@@ -4,19 +4,20 @@ import NavigationServices from '../../../Navigation/NavigationServices';
 import WeatherActions from '../../../Redux/WeatherRedux';
 import WeatherHourlyActions from '../../../Redux/WeatherHourlyRedux';
 import {useEffect, useState} from 'react';
+import moment from 'moment';
+import {mapDates} from './Home.mapper';
 
 export const useHome = () => {
   const dispatch = useDispatch();
   const themeSelector = useSelector(state => state.theme);
   const themes = useSelector(ThemeSelectors.getColors);
-  const sampleRedux = useSelector(state => state);
   const whRedux = useSelector(state => state.weatherHourly);
+  const weatherRedux = useSelector(state => state.weather);
   const [activeId, setActiveId] = useState([]);
   const [activeIdTest, setActiveIdTest] = useState([]);
 
   useEffect(() => {
     dispatch(WeatherActions.setWeatherReq({actionType: 'load'}));
-    // dispatch(WeatherHourlyActions.setWeatherHourlyReq());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -30,17 +31,21 @@ export const useHome = () => {
     setActiveId([...data]);
   };
 
+  function getUniqueListBy(arr, key) {
+    return [...new Map(arr.map(item => [item[key], item])).values()];
+  }
+
   const onPressDetail = () => {
-    // console.tron.log('hahah', sampleRedux);
+    NavigationServices.push('home.detail');
   };
 
   return {
     state: {
       themes,
-      sampleRedux,
       whRedux,
       setActiveId,
       activeId,
+      weatherRedux,
     },
     actions: {
       actionsData,

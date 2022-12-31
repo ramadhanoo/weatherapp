@@ -8,10 +8,13 @@ import {Section} from '../../../Components/index';
 import ChanceRain from './content/ChanceRain/ChanceRain';
 import DayForecast from './content/DayForecast/DayForecast';
 import HourlyForecast from './content/HourlyForecast/HourlyForecast';
+import moment from 'moment';
+moment.locale('id');
+
 const Home = props => {
   const {state, actions} = useHome();
   const {actionsData, onPressDetail} = actions;
-  const {whRedux, activeId, setActiveId} = state;
+  const {whRedux, activeId, weatherRedux} = state;
 
   return (
     <BaseScreens
@@ -21,9 +24,10 @@ const Home = props => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <Header
           status={'Monstly Cloudy'}
-          tmpHigest={20}
-          tmpLowest={14}
-          tempText={'19'}
+          tmpHigest={parseInt(weatherRedux.data?.main?.temp_max ?? 0, 10)}
+          tmpLowest={parseInt(weatherRedux.data?.main?.temp_min ?? 0, 10)}
+          tempText={parseInt(weatherRedux.data?.main?.temp ?? 0, 10)}
+          onPressDetail={onPressDetail}
         />
         <View style={styles.hourlyContainer}>
           <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
@@ -34,13 +38,18 @@ const Home = props => {
               loadingContainerStyles={styles.containerCard}
               loadingIndicatorStyle={styles.loadingStyle}>
               {(whRedux.data?.list ?? []).map((item, index) => {
-                return (
-                  <ChanceRain
-                    key={index}
-                    time={'24:00'}
-                    title={'ini adalah saya gue'}
-                  />
-                );
+                if (
+                  moment(item.dt_txt).format('YYYYMMDD') ===
+                  moment().format('YYYYMMDD')
+                ) {
+                  return (
+                    <ChanceRain
+                      key={index}
+                      time={moment(item.dt_txt).format('HH:mm')}
+                      title={item?.weather[0]?.description ?? ''}
+                    />
+                  );
+                }
               })}
             </Section>
           </ScrollView>
@@ -56,9 +65,19 @@ const Home = props => {
                 loadingContainerStyles={styles.containerCard}
                 loadingIndicatorStyle={styles.dayLoading}>
                 {(whRedux.data?.list ?? []).map((item, index) => {
-                  return (
-                    <DayForecast key={index} time={'24:00'} title={'0%'} />
-                  );
+                  if (
+                    moment(item.dt_txt).format('YYYYMMDD') ===
+                    moment().format('YYYYMMDD')
+                  ) {
+                    return (
+                      <DayForecast
+                        key={index}
+                        tempText={parseInt(item?.main?.temp ?? 0, 10)}
+                        time={moment(item.dt_txt).format('HH:mm')}
+                        title={`${item?.main?.humidity ?? 0}%`}
+                      />
+                    );
+                  }
                 })}
               </Section>
             </ScrollView>
@@ -74,15 +93,18 @@ const Home = props => {
                 containerBodyStyle={styles.containerCardVertical}
                 loadingContainerStyles={styles.containerCardVertical}
                 loadingIndicatorStyle={styles.dayLoading}>
-                {(whRedux.data?.list ?? []).map((item, index) => {
+                {(whRedux.dailyForecast ?? []).map((item, index) => {
                   return (
                     <HourlyForecast
                       key={index}
                       id={item.dt}
+                      itemData={item}
+                      tmpHigest={parseInt(item?.temp_max ?? 0, 10)}
+                      tmpLowest={parseInt(item?.temp_min ?? 0, 10)}
                       onPressItem={actionsData}
-                      time={'24:00'}
-                      title={'Tomorrow'}
+                      title={moment(item.dt_txt).format('DD MMM YYYY')}
                       whRedux={whRedux}
+                      subTitle={item?.description ?? ''}
                       active={false}
                       activeId={activeId}
                     />

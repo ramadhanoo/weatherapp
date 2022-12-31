@@ -21,6 +21,7 @@ export const INITIAL_STATE = {
   error: false,
   message: '',
   actionType: 'refresh', //refresh || load
+  dailyForecast: [],
 };
 
 /* ------------- Selectors ------------- */
@@ -42,6 +43,7 @@ export const succesFetchWeatherHourlyReducer = (state, {payload}) => ({
   error: false,
   isRefresh: false,
   message: '',
+  dailyForecast: payload?.dailyForecast ?? [],
 });
 
 export const errorFetchWeatherHourlyReducer = (state, {payload}) => ({
@@ -51,6 +53,7 @@ export const errorFetchWeatherHourlyReducer = (state, {payload}) => ({
   isRefresh: false,
   error: true,
   message: '',
+  dailyForecast: [],
 });
 
 export const setLoadingWeatherHourlyReducer = (state, {payload}) => ({

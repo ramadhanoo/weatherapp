@@ -9,6 +9,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import {Section} from '../../../../../Components';
 import DayForecast from '../DayForecast/DayForecast';
+import moment from 'moment';
+moment.locale('id');
+
 const HourlyForecast = ({
   time,
   title,
@@ -21,6 +24,7 @@ const HourlyForecast = ({
   active,
   id,
   activeId,
+  itemData,
 }) => {
   return (
     <TouchableOpacity
@@ -86,7 +90,7 @@ const HourlyForecast = ({
                 color={Colors.greyText}
               />
               <Text style={styles.textTitle}>Chance</Text>
-              <Text style={styles.textSubtitle}>90%</Text>
+              <Text style={styles.textSubtitle}>{itemData?.clouds ?? 0}%</Text>
             </View>
             <View style={styles.cardWind}>
               <Ionicons
@@ -95,7 +99,9 @@ const HourlyForecast = ({
                 color={Colors.greyText}
               />
               <Text style={styles.textTitle}>Preception</Text>
-              <Text style={styles.textSubtitle}>90%</Text>
+              <Text style={styles.textSubtitle}>
+                {itemData?.humidity ?? 0}%
+              </Text>
             </View>
             <View style={styles.cardWind}>
               <Fontisto
@@ -104,7 +110,7 @@ const HourlyForecast = ({
                 color={Colors.greyText}
               />
               <Text style={styles.textTitle}>Wind</Text>
-              <Text style={styles.textSubtitle}>90%</Text>
+              <Text style={styles.textSubtitle}>0%</Text>
             </View>
             <View style={styles.cardWind}>
               <Ionicons
@@ -113,7 +119,7 @@ const HourlyForecast = ({
                 color={Colors.greyText}
               />
               <Text style={styles.textTitle}>Chance</Text>
-              <Text style={styles.textSubtitle}>90%</Text>
+              <Text style={styles.textSubtitle}>0%</Text>
             </View>
           </View>
           <View style={styles.forecasDailyContainer}>
@@ -126,9 +132,14 @@ const HourlyForecast = ({
                 containerBodyStyle={styles.containerCard}
                 loadingContainerStyles={styles.containerCard}
                 loadingIndicatorStyle={styles.dayLoading}>
-                {(whRedux.data?.list ?? []).map((item, index) => {
+                {(itemData?.data ?? []).map((item, index) => {
                   return (
-                    <DayForecast key={index} time={'24:00'} title={'0%'} />
+                    <DayForecast
+                      key={index}
+                      tempText={parseInt(item?.main?.temp ?? 0, 10)}
+                      time={moment(item.dt_txt).format('HH:mm')}
+                      title={`${item?.main?.humidity ?? 0}%`}
+                    />
                   );
                 })}
               </Section>
@@ -151,6 +162,7 @@ HourlyForecast.defaultProps = {
   active: false,
   id: 0,
   activeId: [],
+  itemData: null,
 };
 
 export default HourlyForecast;
